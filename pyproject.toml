@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "minqual"
+version = "0.1.0"
+description = "A verification-first code-quality skill and MCP server for 10 programming languages."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "MinQual contributors" }]
+keywords = ["mcp", "code-quality", "agent-skills", "static-analysis", "coding-agents"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = ["mcp>=1.29,<2"]
+
+[project.scripts]
+minqual-mcp = "minqual.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/minqual"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"skills/minqual" = "minqual/skills/minqual"
